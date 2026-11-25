@@ -68,7 +68,20 @@ encoder design in [how the encoder works](docs/encoder.md).
   python -m pip install numpy
   ```
 
-## Download and run
+## Install with pip
+
+Install the wheel into an activated Python virtual environment:
+
+```bash
+python -m pip install https://github.com/BlackBearRedux/ps5-at9-converter/releases/download/v0.1.1/ps5_at9_converter-0.1.1-py3-none-any.whl
+ps5-at9-converter --input song.mp3 --output snd0.at9
+```
+
+Pip installs NumPy as a dependency. For a local checkout, use `python -m pip install .`.
+See the [release verification instructions](docs/development.md#verify-a-release)
+to check a downloaded package before installing it.
+
+## Download and run the zipapp
 
 Download `ps5-at9-converter.pyz` and `SHA256SUMS.txt` from the
 [latest release](https://github.com/BlackBearRedux/ps5-at9-converter/releases/latest),

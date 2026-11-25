@@ -4,4 +4,4 @@
 
 """Prepare PlayStation 5 snd0.at9 selection music (ATRAC9) without external tools."""
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"

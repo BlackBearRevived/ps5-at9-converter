@@ -5,3 +5,6 @@ dist/
 *.pyz
 *.at9
 *.wav
+
+build/
+*.egg-info/

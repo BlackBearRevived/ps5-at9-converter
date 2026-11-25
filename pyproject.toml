@@ -1,0 +1,31 @@
+# PS5 AT9 Converter - Python package metadata.
+# Copyright (C) 2026 BlackBearReloaded
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ps5-at9-converter"
+dynamic = ["version"]
+description = "Convert audio to PlayStation 5 snd0.at9 selection music."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md", "third_party/*.LICENSE.txt"]
+dependencies = ["numpy>=1.20"]
+classifiers = ["Programming Language :: Python :: 3", "Topic :: Multimedia :: Sound/Audio :: Conversion"]
+
+[project.scripts]
+ps5-at9-converter = "ps5at9.cli:main"
+
+[project.urls]
+Repository = "https://github.com/BlackBearRedux/ps5-at9-converter"
+Issues = "https://github.com/BlackBearRedux/ps5-at9-converter/issues"
+
+[tool.setuptools]
+packages = ["ps5at9"]
+
+[tool.setuptools.dynamic]
+version = {attr = "ps5at9.__version__"}

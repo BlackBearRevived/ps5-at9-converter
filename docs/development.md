@@ -3,7 +3,7 @@
 ## Local checks
 
 ```bash
-python -m pip install numpy
+python -m pip install .
 python -m unittest discover -s tests
 ```
 
@@ -37,12 +37,29 @@ When changing the bitstream writer or the container, repeat the Sony decoder con
 
 ## Releases
 
-The build workflow tests pushes to `main` and pull requests on Linux, Windows,
-and macOS. Pushing a tag such as `v1.0.0` runs the release tests on Linux and publishes:
+The build workflow tests installation and conversion on Linux, Windows, and
+macOS with Python 3.9 and the current stable Python. It builds a wheel and
+source distribution and tests both in fresh environments outside the checkout.
 
-- a source ZIP with the notices and licenses;
-- `ps5-at9-converter.pyz`, a single-file zipapp that runs with `python ps5-at9-converter.pyz ...`;
-- SHA-256 checksums.
+Update `ps5at9.__version__`, then push the matching `v<version>` tag. Once
+the tests and GitHub Actions attestation pass, the workflow publishes the wheel,
+source distribution, source ZIP, zipapp, and their SHA-256 checksums. This
+workflow builds from the tagged commit.
 
-To restore a missing release for an existing tag, run the release workflow
-from `main` and enter the existing tag. The workflow builds the tagged source.
+## Verify a release
+
+Download the release artifacts and checksum file. Use a recent GitHub CLI to
+verify the wheel against the repository, workflow, tag, and source commit:
+
+```bash
+sha256sum -c SHA256SUMS.txt
+repo=BlackBearRedux/ps5-at9-converter
+tag=v0.1.1
+source_sha=$(gh api "repos/$repo/commits/$tag" --jq .sha)
+gh attestation verify ps5_at9_converter-0.1.1-py3-none-any.whl --repo "$repo" \
+  --signer-workflow "$repo/.github/workflows/ci.yml" \
+  --source-ref "refs/tags/$tag" --source-digest "$source_sha" --deny-self-hosted-runners
+```
+
+Use the appropriate asset filename and tag for your release. The legacy
+`v0.1.0` release predates the attestation workflow.

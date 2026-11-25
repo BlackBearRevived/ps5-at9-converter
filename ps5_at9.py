@@ -6,7 +6,7 @@
 """Convert an audio file into a PlayStation 5 snd0.at9 selection-music asset.
 
 Example: ./ps5_at9.py --input song.mp3 --output snd0.at9
-Requires Python 3.8+ and numpy. Run with --help for all options.
+Requires Python 3.9+ and numpy. Run with --help for all options.
 """
 
 import os
