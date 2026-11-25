@@ -8,17 +8,37 @@ on:
   push:
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing version tag to publish
+        type: string
+        required: true
 
 permissions:
   contents: write
 
 jobs:
   release:
+    if: github.event_name == 'push' || github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
 
     steps:
+      - name: Resolve release tag
+        id: version
+        env:
+          REQUESTED_TAG: ${{ inputs.tag }}
+        run: |
+          tag=${REQUESTED_TAG:-$GITHUB_REF_NAME}
+          if [[ ! $tag =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Expected an existing version tag such as v0.1.0." >&2
+            exit 2
+          fi
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
+          ref: refs/tags/${{ steps.version.outputs.tag }}
           persist-credentials: false
 
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
@@ -31,9 +51,11 @@ jobs:
           python -m unittest discover -s tests
 
       - name: Package
+        env:
+          RELEASE_TAG: ${{ steps.version.outputs.tag }}
         run: |
           set -euo pipefail
-          tag="${GITHUB_REF_NAME}"
+          tag="$RELEASE_TAG"
           version="${tag#v}"
           grep -q "__version__ = \"${version}\"" ps5at9/__init__.py || { echo "ps5at9.__version__ does not match ${tag}"; exit 1; }
           mkdir -p artifacts/stage/ps5-at9-converter artifacts/pyz
@@ -51,12 +73,13 @@ jobs:
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ steps.version.outputs.tag }}
         run: |
-          gh release create "${GITHUB_REF_NAME}" \
-            "artifacts/ps5-at9-converter-${GITHUB_REF_NAME}.zip" \
+          gh release create "${RELEASE_TAG}" \
+            "artifacts/ps5-at9-converter-${RELEASE_TAG}.zip" \
             artifacts/ps5-at9-converter.pyz \
             artifacts/SHA256SUMS.txt \
             --repo "${{ github.repository }}" \
             --verify-tag \
             --generate-notes \
-            --title "ps5-at9-converter ${GITHUB_REF_NAME}"
+            --title "ps5-at9-converter ${RELEASE_TAG}"

@@ -43,3 +43,6 @@ and macOS. Pushing a tag such as `v1.0.0` runs the release tests on Linux and pu
 - a source ZIP with the notices and licenses;
 - `ps5-at9-converter.pyz`, a single-file zipapp that runs with `python ps5-at9-converter.pyz ...`;
 - SHA-256 checksums.
+
+To restore a missing release for an existing tag, run the release workflow
+from `main` and enter the existing tag. The workflow builds the tagged source.
