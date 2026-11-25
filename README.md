@@ -59,35 +59,55 @@ ITU-R BS.1770-4. The only dependency is [numpy](https://numpy.org/).
 The format details are in [the ATRAC9 profile](docs/atrac9-profile.md) and the
 encoder design in [how the encoder works](docs/encoder.md).
 
-## Requirements
+## Install or run
 
-- Python 3.9 or newer on Windows, Linux or macOS.
-- numpy 1.20 or newer:
+The converter supports Python 3.9 or newer on Windows, Linux, and macOS.
+Pip and [uv](https://docs.astral.sh/uv/getting-started/installation/) install
+NumPy automatically.
 
-  ```bash
-  python -m pip install numpy
-  ```
+### Run once with uvx
 
-## Install with pip
-
-Install the wheel into an activated Python virtual environment:
+Run the converter in an isolated environment without installing a command
+permanently.
 
 ```bash
-python -m pip install https://github.com/BlackBearRedux/ps5-at9-converter/releases/download/v0.1.1/ps5_at9_converter-0.1.1-py3-none-any.whl
+uvx --from "https://github.com/BlackBearRedux/ps5-at9-converter/releases/download/v0.1.1/ps5_at9_converter-0.1.1-py3-none-any.whl" ps5-at9-converter --input song.mp3 --output snd0.at9
+```
+
+### Install with uv
+
+```bash
+uv tool install "https://github.com/BlackBearRedux/ps5-at9-converter/releases/download/v0.1.1/ps5_at9_converter-0.1.1-py3-none-any.whl"
 ps5-at9-converter --input song.mp3 --output snd0.at9
 ```
 
-Pip installs NumPy as a dependency. For a local checkout, use `python -m pip install .`.
-See the [release verification instructions](docs/development.md#verify-a-release)
-to check a downloaded package before installing it.
+If uv says its tool directory is missing from your PATH, run
+`uv tool update-shell` and open a new terminal.
 
-## Download and run the zipapp
+### Install with pip
 
-Download `ps5-at9-converter.pyz` and `SHA256SUMS.txt` from the
-[latest release](https://github.com/BlackBearRedux/ps5-at9-converter/releases/latest),
-verify the checksum, then run:
+Create a virtual environment with `python -m venv .venv`. Activate it with
+`source .venv/bin/activate` on Linux or macOS, or
+`.\.venv\Scripts\Activate.ps1` in Windows PowerShell.
 
 ```bash
+python -m pip install "https://github.com/BlackBearRedux/ps5-at9-converter/releases/download/v0.1.1/ps5_at9_converter-0.1.1-py3-none-any.whl"
+ps5-at9-converter --input song.mp3 --output snd0.at9
+```
+
+To install from a local checkout, use `python -m pip install .`.
+The [release verification instructions](docs/development.md#verify-a-release)
+show how to check a downloaded wheel before installing it.
+
+### Download and run the zipapp
+
+Download `ps5-at9-converter.pyz` and `SHA256SUMS.txt` from the
+[latest release](https://github.com/BlackBearRedux/ps5-at9-converter/releases/latest).
+Verify the zipapp with the release instructions above, then install NumPy in
+the Python environment you use to run it.
+
+```bash
+python -m pip install numpy
 python ps5-at9-converter.pyz --input song.mp3 --output snd0.at9
 ```
 
