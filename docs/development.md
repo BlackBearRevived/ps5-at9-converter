@@ -37,7 +37,8 @@ When changing the bitstream writer or the container, repeat the Sony decoder con
 
 ## Releases
 
-Pushing a tag such as `v1.0.0` runs the tests on Linux, Windows and macOS. It then publishes:
+The build workflow tests pushes to `main` and pull requests on Linux, Windows,
+and macOS. Pushing a tag such as `v1.0.0` runs the release tests on Linux and publishes:
 
 - a source ZIP with the notices and licenses;
 - `ps5-at9-converter.pyz`, a single-file zipapp that runs with `python ps5-at9-converter.pyz ...`;

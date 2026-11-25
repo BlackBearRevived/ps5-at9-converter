@@ -5,8 +5,8 @@
 Turn any MP3, WAV, AIFF or FLAC file into the `snd0.at9` selection music of a
 PlayStation 5 app with one command and no external tools.
 
-[![Build](https://github.com/blackbearreloaded/ps5-at9-converter/actions/workflows/ci.yml/badge.svg)](https://github.com/blackbearreloaded/ps5-at9-converter/actions/workflows/ci.yml)
-[![Latest release](https://img.shields.io/github/v/release/blackbearreloaded/ps5-at9-converter)](https://github.com/blackbearreloaded/ps5-at9-converter/releases/latest)
+[![Build](https://github.com/BlackBearRedux/ps5-at9-converter/actions/workflows/ci.yml/badge.svg)](https://github.com/BlackBearRedux/ps5-at9-converter/actions/workflows/ci.yml)
+[![Latest release](https://img.shields.io/github/v/release/BlackBearRedux/ps5-at9-converter)](https://github.com/BlackBearRedux/ps5-at9-converter/releases/latest)
 [![License: GPL v3+](https://img.shields.io/badge/license-GPL--3.0--or--later-blue.svg)](LICENSE)
 
 </div>
@@ -14,7 +14,7 @@ PlayStation 5 app with one command and no external tools.
 > [!NOTE]
 > The encoder's output is validated against Sony's reference ATRAC9 decoder and
 > plays as selection music on PS5 hardware. Please report problems through
-> [GitHub issues](https://github.com/blackbearreloaded/ps5-at9-converter/issues).
+> [GitHub issues](https://github.com/BlackBearRedux/ps5-at9-converter/issues).
 
 ## Project foundations
 
@@ -71,7 +71,7 @@ encoder design in [how the encoder works](docs/encoder.md).
 ## Download and run
 
 Download `ps5-at9-converter.pyz` and `SHA256SUMS.txt` from the
-[latest release](https://github.com/blackbearreloaded/ps5-at9-converter/releases/latest),
+[latest release](https://github.com/BlackBearRedux/ps5-at9-converter/releases/latest),
 verify the checksum, then run:
 
 ```bash
