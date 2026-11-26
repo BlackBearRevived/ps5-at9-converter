@@ -53,7 +53,7 @@ verify the wheel against the repository, workflow, tag, and source commit:
 
 ```bash
 sha256sum -c SHA256SUMS.txt
-repo=BlackBearRedux/ps5-at9-converter
+repo=BlackBearRevived/ps5-at9-converter
 tag=v0.1.1
 source_sha=$(gh api "repos/$repo/commits/$tag" --jq .sha)
 gh attestation verify ps5_at9_converter-0.1.1-py3-none-any.whl --repo "$repo" \

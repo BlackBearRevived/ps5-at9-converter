@@ -21,8 +21,8 @@ classifiers = ["Programming Language :: Python :: 3", "Topic :: Multimedia :: So
 ps5-at9-converter = "ps5at9.cli:main"
 
 [project.urls]
-Repository = "https://github.com/BlackBearRedux/ps5-at9-converter"
-Issues = "https://github.com/BlackBearRedux/ps5-at9-converter/issues"
+Repository = "https://github.com/BlackBearRevived/ps5-at9-converter"
+Issues = "https://github.com/BlackBearRevived/ps5-at9-converter/issues"
 
 [tool.setuptools]
 packages = ["ps5at9"]

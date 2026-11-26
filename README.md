@@ -5,8 +5,8 @@
 Turn any MP3, WAV, AIFF or FLAC file into the `snd0.at9` selection music of a
 PlayStation 5 app with one command and no external tools.
 
-[![Build](https://github.com/BlackBearRedux/ps5-at9-converter/actions/workflows/ci.yml/badge.svg)](https://github.com/BlackBearRedux/ps5-at9-converter/actions/workflows/ci.yml)
-[![Latest release](https://img.shields.io/github/v/release/BlackBearRedux/ps5-at9-converter)](https://github.com/BlackBearRedux/ps5-at9-converter/releases/latest)
+[![Build](https://github.com/BlackBearRevived/ps5-at9-converter/actions/workflows/ci.yml/badge.svg)](https://github.com/BlackBearRevived/ps5-at9-converter/actions/workflows/ci.yml)
+[![Latest release](https://img.shields.io/github/v/release/BlackBearRevived/ps5-at9-converter)](https://github.com/BlackBearRevived/ps5-at9-converter/releases/latest)
 [![License: GPL v3+](https://img.shields.io/badge/license-GPL--3.0--or--later-blue.svg)](LICENSE)
 
 </div>
@@ -14,7 +14,7 @@ PlayStation 5 app with one command and no external tools.
 > [!NOTE]
 > The encoder's output is validated against Sony's reference ATRAC9 decoder and
 > plays as selection music on PS5 hardware. Please report problems through
-> [GitHub issues](https://github.com/BlackBearRedux/ps5-at9-converter/issues).
+> [GitHub issues](https://github.com/BlackBearRevived/ps5-at9-converter/issues).
 
 ## Project foundations
 
@@ -71,13 +71,13 @@ Run the converter in an isolated environment without installing a command
 permanently.
 
 ```bash
-uvx --from "https://github.com/BlackBearRedux/ps5-at9-converter/releases/download/v0.1.1/ps5_at9_converter-0.1.1-py3-none-any.whl" ps5-at9-converter --input song.mp3 --output snd0.at9
+uvx --from "https://github.com/BlackBearRevived/ps5-at9-converter/releases/download/v0.1.1/ps5_at9_converter-0.1.1-py3-none-any.whl" ps5-at9-converter --input song.mp3 --output snd0.at9
 ```
 
 ### Install with uv
 
 ```bash
-uv tool install "https://github.com/BlackBearRedux/ps5-at9-converter/releases/download/v0.1.1/ps5_at9_converter-0.1.1-py3-none-any.whl"
+uv tool install "https://github.com/BlackBearRevived/ps5-at9-converter/releases/download/v0.1.1/ps5_at9_converter-0.1.1-py3-none-any.whl"
 ps5-at9-converter --input song.mp3 --output snd0.at9
 ```
 
@@ -91,7 +91,7 @@ Create a virtual environment with `python -m venv .venv`. Activate it with
 `.\.venv\Scripts\Activate.ps1` in Windows PowerShell.
 
 ```bash
-python -m pip install "https://github.com/BlackBearRedux/ps5-at9-converter/releases/download/v0.1.1/ps5_at9_converter-0.1.1-py3-none-any.whl"
+python -m pip install "https://github.com/BlackBearRevived/ps5-at9-converter/releases/download/v0.1.1/ps5_at9_converter-0.1.1-py3-none-any.whl"
 ps5-at9-converter --input song.mp3 --output snd0.at9
 ```
 
@@ -102,7 +102,7 @@ show how to check a downloaded wheel before installing it.
 ### Download and run the zipapp
 
 Download `ps5-at9-converter.pyz` and `SHA256SUMS.txt` from the
-[latest release](https://github.com/BlackBearRedux/ps5-at9-converter/releases/latest).
+[latest release](https://github.com/BlackBearRevived/ps5-at9-converter/releases/latest).
 Verify the zipapp with the release instructions above, then install NumPy in
 the Python environment you use to run it.
 
